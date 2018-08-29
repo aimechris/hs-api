@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :listimage do
-    image { Faker::Lorem.word }
+    photo 'http://gph.is/1mbBUKP'
     listing_id nil
   end
 end

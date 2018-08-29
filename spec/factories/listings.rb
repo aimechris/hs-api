@@ -15,6 +15,7 @@ FactoryBot.define do
     description { Faker::Lorem.word }
     virtual_tour { Faker::Lorem.word }
     display_img { Faker::Lorem.word }
+    status 'available'
     created_by { Faker::Number.number(10) }
   end
 end
