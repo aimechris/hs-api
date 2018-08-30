@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   # User
   post 'user/signup', to: 'users#create'
   post 'user/auth/login', to: 'userauthentication#authenticate'
-
+  resources :advertiser do
+    member do
+      get :confirm_email
+    end
+  end
   get 'search', to: 'listings#search'
   get 'filter', to: 'listings#filter'
 
@@ -25,6 +29,6 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :tags
-  end  
+  end
   resources :categories
 end

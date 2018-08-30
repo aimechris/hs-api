@@ -6,8 +6,8 @@ RSpec.describe 'Tags API', type: :request do
   let(:category) { create(:category) }
   let!(:author) { create(:author) }
   let(:category_id) { category.id }
-  let!(:post) { create(:post, category_id: category.id) }
-  let!(:tags) { create_list(:tag, 5, post_id: post.id) }
+  let!(:post_id) { create(:post, category_id: category.id) }
+  let!(:tags) { create_list(:tag, 5, post_ids: post.id) }
   let(:id) { tags.first.id }
   let(:headers) { valid_author_headers }
 

@@ -49,13 +49,12 @@ RSpec.describe 'Categories API', type: :request do
   # Test duite for POST /listings
   describe 'POST /categories' do
     #valid payload
-    let(:valid_attributes) { { category_name:'Property Search' } }
-
+    let(:valid_attributes) {{ category_name: 'Kitchen' }}.to_json
     context 'when the request is valid' do
-      before { post '/categories', params: valid_attributes.to_json, headers: headers  }
+      before { post '/categories', params: valid_attributes, headers: headers  }
 
       it "creates a category" do
-        expect(json['category_name']).to eq('Property Search')
+        expect(json['category_name']).to eq('Kitchen')
       end
 
       it "returns status code 201" do
@@ -64,14 +63,14 @@ RSpec.describe 'Categories API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/categories', params:{ category_name: 'qet' }, headers: headers }
+      before { post '/categories', params:{ category_name: '' }, headers: headers }
 
       it "returns status code 422" do
         expect(response).to have_http_status(422)
       end
 
       it "returns a validation failure message" do
-        expect(response.body).to match(/Validation failed: category_name can't be blank/)
+        expect(response.body).to match(/Validation failed: Category name can't be blank/)
       end
     end
   end

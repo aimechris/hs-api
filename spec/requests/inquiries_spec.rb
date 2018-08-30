@@ -51,7 +51,10 @@ RSpec.describe 'Inquiries API', type: :request do
   # Test duite for POST /inquiries
   describe 'POST /inquiries' do
     #valid payload
-    let(:valid_attributes) {{ querry: 'some text'}}
+    let(:valid_attributes) {{
+      querry: 'some text',
+      created_at: Faker::Time.between(DateTime.now - 1, DateTime.now), listing_id: listing.id.to_s
+      }}.to_json
     context 'when the request is valid' do
       before { post '/inquiries', params: valid_attributes, headers: headers }
 

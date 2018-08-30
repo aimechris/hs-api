@@ -1,0 +1,5 @@
+Hi <%= @advertiser.name %>
+
+Thanks for registering! To confirm your registration click the URL below
+
+<%= confirm_email_advertiser_url(@advertiser.confirm_token) %>

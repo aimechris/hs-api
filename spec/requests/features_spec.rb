@@ -49,7 +49,7 @@ RSpec.describe 'Features API', type: :request do
   # Test duite for POST /listings
   describe 'POST /features' do
     #valid payload
-    let(:valid_attributes) { { feature_name: 'Kitchen' } }
+    let(:valid_attributes) {{ feature_name: 'Kitchen' }}.to_json
     context 'when the request is valid' do
       before { post '/features', params: valid_attributes, headers: headers }
 
@@ -63,14 +63,14 @@ RSpec.describe 'Features API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/features', params:{ feature_name: 'qet' }, headers: headers }
+      before { post '/features', params:{feature_name: ''}, headers: headers }
 
       it "returns status code 422" do
         expect(response).to have_http_status(422)
       end
 
       it "returns a validation failure message" do
-        expect(response.body).to match(/Validation failed: feature_name can't be blank\"/)
+        expect(response.body).to match(/Validation failed: Feature name can't be blank\"/)
       end
     end
   end

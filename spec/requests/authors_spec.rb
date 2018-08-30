@@ -10,7 +10,7 @@ RSpec.describe 'Author API', type: :request do
   # Author signup test suite
   describe 'POST author/signup' do
     context 'when valid request' do
-      before { post 'author/signup', params: valid_attributes.to_json, headers: headers }
+      before { post '/author/signup', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new author' do
         expect(response).to have_http_status(201)
@@ -26,7 +26,7 @@ RSpec.describe 'Author API', type: :request do
     end
 
     context 'when invalid request' do
-      before { post 'author/signup', params: {}, headers: headers }
+      before { post '/author/signup', params: {}, headers: headers }
 
       it 'does not create a new advertiser' do
         expect(response).to have_http_status(422)

@@ -30,7 +30,7 @@ class InquiriesController < ApplicationController
   private
 
   def inquiry_params
-    params.permit(:querry)
+    params.permit(:querry, :created_at, :listing_id)
   end
 
   def set_inquiry

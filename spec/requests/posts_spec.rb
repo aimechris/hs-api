@@ -82,11 +82,12 @@ RSpec.describe 'Posts API', type: :request do
       title: 'How to buy a house',
       subtitle: 'planning to buy a house',
       content: 'agagagfag',
-      post_image: 'ahgaghag',
+      post_image: 'assets/nh.png',
       status: 'publish',
       published_by: 'yu',
-      published_at: '2014-09-18 12:30:59'
-    }}
+      published_at: '2014-09-18 12:30:59',
+      category_id: category.id.to_s
+    }}.to_json
     context 'when the request is valid' do
       before { post '/posts', params: valid_attributes, headers: headers }
 
